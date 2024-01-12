@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue Practice</title>
+    <script src="../vue.global.js"></script>
+</head>
+<body>
+    
+    <div id="hello-vue" class="demo">
+        {{ message }}　　　<!--用於輸出物件屬性和函數傳回值。-->
+      </div>
+      <div id="app" class="demo"></div>
+      
+      <script>
+      const HelloVueApp = Vue.createApp({
+        data() {           <!-- 函數 -->
+          return {
+            message: 'Hello Vue!!'
+          }
+        }
+      })
+      const hellovm = HelloVueApp.mount('#hello-vue') <!--利用mount掛載-->
+      
+      const app = Vue.createApp({
+        data() {
+          return { count: 4 }
+        },
+        methods: {
+          increment() {
+            this.count++
+          }
+        }
+      })
+      const vm = app.mount('#app')       
+      
+      document.write(vm.$data.count)    // => 4
+      vm.increment()
+      document.write(vm.count)          // => 5
+      </script>
+</body>
+</html>
